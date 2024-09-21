@@ -18,4 +18,4 @@ Kantle's Wardrobe began with a passion for fashion that started in a grandmother
 ## How to Access
 You can explore the portfolio by cloning the repository:
 ```bash
-git clone https://github.com/yourusername/kantles-wardrobe.git
+gh repo clone GaneshKantle/KANTLE-Wardrobe
