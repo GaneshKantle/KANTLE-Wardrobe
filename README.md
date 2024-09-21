@@ -14,3 +14,8 @@ Kantle's Wardrobe began with a passion for fashion that started in a grandmother
 - **Product Showcase**: Explore custom suits, casual wear, shirts, and accessories.
 - **Commitment to Excellence**: Every piece reflects craftsmanship and sustainability.
 - **Fashion with Purpose**: A brand dedicated to style, confidence, and environmental responsibility.
+
+## How to Access
+You can explore the portfolio by cloning the repository:
+```bash
+git clone https://github.com/yourusername/kantles-wardrobe.git
