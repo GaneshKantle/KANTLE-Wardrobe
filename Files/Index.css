@@ -1,0 +1,368 @@
+<style>
+@import url('https://fonts.googleapis.com/css2? family=Montserrat:wght@500&family=Work+Sans&display=swap');
+* {
+margin: 0;
+padding: 0;
+box-shadow: border-box;
+}
+
+:root {
+--font: 'Montserrat', sans-serif;
+--prime-font: 'Work Sans' , sans-serif;
+--bg: #1a1c20;
+--main-color: #f9813a;
+--main-font-color: #fdfbfb;
+--sec-font-color: #fcf1f1b4;
+}
+
+body {
+background: var(--bg);
+font-family: var(--font);
+color: var(--main-font-color);
+overflow-x: hidden;
+}
+.center {
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+.nav {
+width: 85%;
+height: 70px;
+margin: 0 auto;
+justify-content: space-between;
+}
+
+.chechkBtn {
+display: none;
+}
+
+.nav .logo {
+font-size: 2em;
+}
+
+.nav ol {
+list-style: none;
+}
+
+.nav ol a {
+text-decoration: none;
+color: var(--sec-font-color);
+margin: 0.3em;
+padding: 0.5em 1.5em;
+border-radius: 10px;
+}
+
+.nav ol a:hover {
+transition: backgroung .8s;
+background: var(--main-color);
+}
+
+.main {
+width: 85%;
+height: 650px;
+margin: 0 auto;
+display: flex;
+align-items: center;
+position: relative;
+}
+
+.main::before, .main::after {
+content: '';
+width: 80%;
+height: 70%;
+background: #151618;
+position: absolute;
+bottom: 0;
+right: -10%;
+z-index: -10;
+}
+
+.main::after {
+background: #15161885;
+height: 60%;
+top: 20px;
+left: -40%;
+border-top: 1px solid #f9803a;
+border-right: 1px solid #4985c9;
+z-index: -11;
+}
+
+.box h1 {
+font-size: 3.5em;
+margin-bottom: 0.2em;
+}
+
+.box p {
+font-size: 1.2em;
+color: var(--sec-font-color);
+margin-bottom: 1.2em;
+}
+
+.btn {
+display: inline-block;
+padding: 10px 20px; 
+background-color: #3498db;
+color: #fff; 
+text-decoration: none;
+border: none; 
+border-radius: 5px; 
+text-align: center;
+font-weight: bold;
+}
+
+.btn:hover {
+background-color: #2980b9; 
+transition: background-color 0.3s;
+}
+
+
+.main img {
+width: 30em;
+top: 22px;
+position: absolute;
+right: -60px;
+z-index: -1;
+}
+
+@media (max-width: 1250px) {
+.main img { width: 25em; right: 0; }
+}
+
+@media (max-width:1000px) {
+body {font-size: 14px;}
+.main img {width: 35em; top: 80px;}
+.main{align-items: flex-end;}
+.chechkBtn{
+display: block; width: 25px;
+height: 25px; cursor: pointer;
+position: relative; 
+/* appearance: none */
+/* -webkit-appearance: none; */
+}
+
+.chechkBtn::before {
+content: '\f0c9'; font-family: 'Font Awesome 5 Free';
+font-weight: 700; font-size: 1.9em;
+color: var(--sec-font-color);
+}
+
+.checkBtn:checked::before { content: '\f00d';}
+.nav ol {
+position: absolute; width: 100%;
+flex-direction: column; background: var(--bg);
+top: 80px; left: 0;
+z-index: 100; padding: 1.2em;
+clip-path: polygon(0 0, 100% 0, 100% 0, 0 0); transition: clip-path .4s;
+}
+
+.checkBtn:checked ~ ol { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);}
+.nav ol::before {
+content:''; position: absolute;
+bottom: 0; left: 0;
+width: 100%; height: 5px;
+background: var(--main-color);
+}
+}
+
+@media (max-width: 900px) {
+.main img{
+width: 30em;
+}
+}
+
+@media (max-width: 600px) {
+.main img{
+width: 22em;
+}
+}
+
+@media (max-width: 400px) {
+body {
+font-size: 10px;
+}
+.main {
+height: 450px;
+}
+}
+.frame {
+display: flex;
+justify-content:center;
+align-items: center;
+flex-direction: row;
+gap: 32px;
+flex-wrap:wrap;
+padding: 32px;
+margin: 0 auto;
+}
+
+.card {
+position: relative;
+width: 300px;
+height: 400px;
+background: #ffffff;
+border-radius: 3px;
+margin: 0 auto;
+transform: translateY(20px);
+box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+.card::before,
+.card::after {
+content: '';
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+border-radius: 3px;
+background: #ffffff;
+box-shadow: 0 3px 10px rgba(0, 0,0,0.2);
+z-index: -1;
+transition: 0.5s;
+}
+
+.card:hover::after {
+transform: rotate(10deg);
+}
+
+.card:hover::before {
+transform: rotate(20deg);
+}
+
+.card .imgBox {
+position: absolute;
+top: 10px;
+left: 10px;
+right: 10px;
+bottom: 10px;
+background: #101010;
+z-index: 1;
+transition: 0.5s;
+}
+
+.card:hover .imgBox {
+bottom: 75px;
+}
+
+.card .imgBox img {
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+object-fit: cover;
+}
+
+.card .details {
+position: absolute;
+left: 10px;
+right: 10px;
+bottom: 10px;
+height: 55px;
+}
+
+.card .details h2{
+margin-top: 5px;
+padding: 0;
+font-weight: 900;
+font-size: 20px;
+color:darkkhaki;
+text-align: center;
+line-height: 1.15en;
+}
+
+.crad .details h2 span{
+font-weight: 400;
+font-size: 15px;
+color: #0dac4f;
+}
+
+footer {
+width: 100%;
+background: linear-gradient(#141e30, #243b55);
+}
+
+input,
+a,
+button,
+li {
+all: unset;
+font: inherit;
+}
+a,
+button {
+cursor: pointer;
+}
+
+footer {
+padding: 3.5rem clamp(3rem, 6vw, 14rem);
+}
+.footer-wrapper {
+max-width: 90rem;
+margin: 0 auto;
+}
+
+.footer-section {
+display: flex;
+justify-content: space-between;
+flex-wrap: wrap;
+gap: 3rem;
+}
+
+.footer-subscribe {
+max-width: clamp(20rem, 33vw, 33rem);
+}
+.footer-subscribe > h2 {
+font-size: clamp(1.5rem, 2.3vw, 2.25rem);
+}
+.input-box {
+display: flex;
+max-width: 100%;
+padding-block: 1rem;
+border-bottom: 1px solid black;
+margin-top: 3rem;
+}
+.input-box > input {
+flex-grow: 1;
+
+}
+
+.footer-nav {
+display: flex;
+flex-wrap: wrap;
+gap: clamp(3rem, 4vw, 7rem);
+}
+.footer-nav > div > h3 {
+font-size: 1rem;
+}
+.footer-nav > div > ul {
+display: flex;
+flex-direction: column;
+gap: 0.5rem;
+margin-top: 2rem;
+}
+.footer-nav > div li {
+font-size: 1.125rem;
+font-weight: 700;
+transition: opacity 200ms ease;
+}
+.footer-nav > div li:hover {
+opacity: 0.5;
+}
+
+.footer-copyright {
+display: flex;
+flex-wrap: wrap;
+font-size: 0.875rem;
+margin-top: 5rem;
+}
+
+
+@media (width <= 53rem) {
+.footer-subscribe {
+max-width: 100%;
+}
+}
+</style>
