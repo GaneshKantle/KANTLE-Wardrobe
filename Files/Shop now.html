@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta  name="viewport" content="width=device-width, initially-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <style>
+            * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 108vh;
+    /* background: #313131; */
+    /* background: linear-gradient(#141e30, #2a2b4b); */
+    /* background: linear-gradient(135deg, #295fd5, #9d8ce0); */
+    background: linear-gradient(135deg, #F0F0F0, #CCCCCC);
+
+    font-family: 'Poppins', sans-serif;
+}
+
+.frame {
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    flex-direction: row;
+    gap: 32px;
+    flex-wrap:wrap;
+    padding: 32px;
+    margin: 0 auto;
+}
+
+.card {
+    position: relative;
+    width: 300px;
+    height: 400px;
+    background: #ffffff;
+    border-radius: 3px;
+    margin: 0 auto;
+    transform: translateY(20px);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+.card::before,
+.card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 3px;
+    background: #ffffff;
+    box-shadow: 0 3px 10px rgba(0, 0,0,0.2);
+    z-index: -1;
+    transition: 0.5s;
+}
+
+.card:hover::after {
+    transform: rotate(10deg);
+}
+
+.card:hover::before {
+    transform: rotate(20deg);
+}
+
+.card .imgBox {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    background: #101010;
+    z-index: 1;
+    transition: 0.5s;
+}
+
+.card:hover .imgBox {
+    bottom: 75px;
+}
+
+.card .imgBox img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.card .details {
+    position: absolute;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    height: 55px;
+}
+
+.card .details h2{
+    margin-top: 5px;
+    padding: 0;
+    font-weight: 900;
+    font-size: 20px;
+    color:darkkhaki;
+    text-align: center;
+    line-height: 1.15en;
+}
+
+.crad .details h2 span{
+    font-weight: 400;
+    font-size: 15px;
+    color: #0dac4f;
+}
+        </style>
+    </head>
+    <body>
+         <div class="frame">
+            <div class="card">
+                <div class="imgBox">
+                    <a href="Shirts/Shirt 1.html"><img src="Images/Shirt 1.jpg" alt="some image"></a>
+                </div>
+                <div class="details">
+                    <h2>Lotus Stripe<br><span>Adamen Pink Shirt</span></h2>
+                </div>
+            </div>
+        <div class="frame">
+            <div class="card">
+                <div class="imgBox">
+                    <a href="Shirts/Shirt 2.html"><img src="Images/Shirt 2.jpg" alt="some image"></a>
+                </div>
+                <div class="details">
+                    <h2>Throner Olive <br><span>Patch Pocket Shirt</span></h2>
+                </div>
+            </div>
+        <div class="frame">
+            <div class="card">
+                <div class="imgBox">
+                    <a href="Shirts/Shirt 3.html"><img src="Images/Shirt 3.jpg" alt="some image"></a>
+                </div>
+                <div class="details">
+                    <h2>Coast Stripe<br><span>Andamen Blue Shirt</span></h2>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="frame">
+        <div class="card">
+            <div class="imgBox">
+                <a href="Shirts/Shirt 4.html"><img src="Images/Shirt 4.jpg" alt="some image"></a>
+            </div>
+            <div class="details">
+                <h2>Yellow Lamb<br><span> Wool Pullover</span></h2>
+            </div>
+        </div>
+    <div class="frame">
+        <div class="card">
+            <div class="imgBox">
+                <a href="Shirts/Shirt 5.html"><img src="Images/Shirt 5.jpg" alt="some image"></a>
+            </div>
+            <div class="details">
+                <h2>Curved Hemline<br><span>Checked Green Shirt</span></h2>
+            </div>
+        </div>
+    <div class="frame">
+        <div class="card">
+            <div class="imgBox">
+                <a href="Shirts/Shirt 6.html"><img src="Images/Shirt 6.jpg" alt="some image"></a>
+            </div>
+            <div class="details">
+                <h2>Handcrafted No Evil <br><span>White Shirt</span></h2>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="frame">
+    <div class="card">
+        <div class="imgBox">
+            <a href="Pants/Pant 1.html"><img src="Images/Pant 1.jpg" alt="some image"></a>
+        </div>
+        <div class="details">
+            <h2>Decibal Multi <br><span>Black Jeans</span></h2>
+        </div>
+    </div>
+<div class="frame">
+    <div class="card">
+        <div class="imgBox">
+            <a href="Pants/Pant 2.html"><img src="Images/Pant 2.jpg" alt="some image"></a>
+        </div>
+        <div class="details">
+            <h2>Mid-Raised<br><span>Blue Jeans</span></h2>
+        </div>
+    </div>
+<div class="frame">
+    <div class="card">
+        <div class="imgBox">
+            <a href="Pants/Pant 3.html"><img src="Images/Pant 3.jpg" alt="some image"></a>
+        </div>
+        <div class="details">
+            <h2>Textured Slim Fit<br><span>Khaki Brown Trouser</span></h2>
+        </div>
+    </div>
+</div>
+</div>
+ <div class="frame">
+    <div class="card">
+        <div class="imgBox">
+            <a href="Pants/Pant 4.html"><img src="Images/Pant 4.jpg" alt="some image"></a>
+        </div>
+        <div class="details">
+            <h2>Light Mercerised<br><span> Narrow Blue  Jeans</span></h2>
+        </div>
+    </div>
+<div class="frame">
+    <div class="card">
+        <div class="imgBox">
+            <a href="Pants/Pant 5.html"><img src="Images/Pant 5.jpg" alt="some image"></a>
+        </div>
+        <div class="details">
+            <h2>Stretchable Fit<br><span>Biege Jeans</span></h2>
+        </div>
+    </div>
+<div class="frame">
+    <div class="card">
+        <div class="imgBox">
+            <a href="Pants/Pant 6.html"><img src="Images/Pant 6.jpg" alt="some image"></a>
+        </div>
+        <div class="details">
+            <h2>Baggy Fit <br><span>Olive Cargo</span></h2>
+        </div>
+    </div>
+</div>
+</div>
+
+    </body>
+</html>
