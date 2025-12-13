@@ -1,0 +1,421 @@
+/* Importing sketch-style font */
+@import url('https://fonts.googleapis.com/css2?family=Covered+By+Your+Grace&family=Permanent+Marker&family=Indie+Flower&display=swap');
+
+/* Custom Properties */
+:root {
+    --sketch-dark: #2c2c2c;
+    --sketch-light: #f9f9f9;
+    --accent-color: #e74c3c;
+    --sketch-shadow: #888;
+    --paper-texture: #fff;
+}
+
+/* Global Reset with Artistic Touch */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--paper-texture);
+    font-family: 'Indie Flower', cursive;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Sketch Effect Utility Class */
+.sketch-border {
+    position: relative;
+    border: 2px solid var(--sketch-dark);
+    animation: draw 1s linear forwards;
+}
+
+.sketch-border::before {
+    content: '';
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    right: -4px;
+    bottom: -4px;
+    border: 2px solid var(--sketch-dark);
+    opacity: 0.3;
+    animation: sketchBorder 0.5s infinite alternate;
+}
+
+/* Navigation with Sketch Style */
+.nav {
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.95);
+    height: 60px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.nav-container {
+    max-width: 1200px;
+    height: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1rem;
+}
+
+/* Logo Container */
+.logo-container {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 5px 0;
+}
+
+/* Logo Image Styling */
+.nav-logo {
+    height: 40px; /* Fixed height for the logo */
+    width: auto; /* Maintain aspect ratio */
+    object-fit: contain; /* Ensures logo fits without distortion */
+    display: block;
+}
+
+.nav-menu {
+    display: flex;
+    gap: 2rem;
+    height: 100%;
+    align-items: center;
+}
+
+.nav-menu a {
+    font-family: 'Covered By Your Grace', cursive;
+    font-size: 1.1rem;
+    color: var(--sketch-dark);
+    text-decoration: none;
+    position: relative;
+    padding: 0.25rem 0.5rem;
+}
+
+.nav-menu a::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background: var(--sketch-dark);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+    animation: draw 0.5s linear infinite alternate;
+}
+
+.nav-menu a:hover::after {
+    transform: scaleX(1);
+}
+
+/* Add margin-top to the hero section to prevent overlap */
+.hero {
+    padding-top: 60px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .nav {
+        height: 50px;
+    }
+    
+    .nav-logo {
+        height: 35px; /* Slightly smaller logo on mobile */
+    }
+    
+    .hero {
+        padding-top: 50px;
+    }
+}
+
+/* Hero Section with Artistic Elements */
+.hero {
+    height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--paper-texture);
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, #f3f3f3 25%, transparent 25%),
+                linear-gradient(-45deg, #f3f3f3 25%, transparent 25%),
+                linear-gradient(45deg, transparent 75%, #f3f3f3 75%),
+                linear-gradient(-45deg, transparent 75%, #f3f3f3 75%);
+    background-size: 20px 20px;
+    background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+    opacity: 0.1;
+}
+
+.hero-content {
+    text-align: center;
+    z-index: 1;
+    padding: 2rem;
+}
+
+.hero h1 {
+    font-family: 'Permanent Marker', cursive;
+    font-size: 5rem;
+    color: var(--sketch-dark);
+    margin-bottom: 1rem;
+    animation: sketching 2s ease-out forwards;
+}
+
+.hero p {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: var(--sketch-dark);
+    opacity: 0;
+    animation: fadeIn 1s 1s forwards;
+}
+
+/* Artistic Button */
+.cta-button {
+    display: inline-block;
+    padding: 1rem 2rem;
+    font-family: 'Covered By Your Grace', cursive;
+    font-size: 1.5rem;
+    color: var(--sketch-dark);
+    text-decoration: none;
+    border: 2px solid var(--sketch-dark);
+    position: relative;
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.cta-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: var(--sketch-dark);
+    transition: all 0.3s ease;
+    z-index: -1;
+}
+
+.cta-button:hover::before {
+    left: 0;
+}
+
+.cta-button:hover {
+    color: var(--sketch-light);
+}
+
+/* Product Cards with Sketch Effect */
+.featured-products {
+    padding: 5rem 2rem;
+    background: var(--paper-texture);
+    position: relative;
+}
+
+.section-title {
+    font-family: 'Permanent Marker', cursive;
+    text-align: center;
+    font-size: 3rem;
+    margin-bottom: 3rem;
+    color: var(--sketch-dark);
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.product-card {
+    position: relative;
+    background: var(--sketch-light);
+    padding: 1rem;
+    transition: transform 0.3s ease;
+}
+
+.product-card::before {
+    content: '';
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    right: -10px;
+    bottom: -10px;
+    border: 2px solid var(--sketch-dark);
+    z-index: -1;
+    transition: all 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translate(-5px, -5px);
+}
+
+.product-card:hover::before {
+    transform: translate(10px, 10px);
+}
+
+.product-image {
+    position: relative;
+    overflow: hidden;
+    padding-top: 100%; /* Reduced the padding to make images smaller */
+}
+
+.product-image img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(20%) contrast(110%);
+    transition: all 0.3s ease;
+}
+
+.product-card:hover .product-image img {
+    filter: grayscale(0%) contrast(100%);
+}
+
+.product-info {
+    padding: 1.5rem;
+    text-align: center;
+}
+
+.product-info h3 {
+    font-family: 'Permanent Marker', cursive;
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+/* New Footer Design */
+footer {
+    background: var(--sketch-dark);
+    color: var(--sketch-light);
+    padding: 2rem 2rem;
+    text-align: center;
+}
+
+footer .footer-content {
+    font-family: 'Indie Flower', cursive;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+.footer-subscribe h2 {
+    font-family: 'Permanent Marker', cursive;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.input-box {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.input-box input {
+    flex: 1;
+    padding: 0.75rem;
+    border: 2px solid var(--sketch-light);
+    background: transparent;
+    color: var(--sketch-light);
+    font-family: 'Indie Flower', cursive;
+    font-size: 1.1rem;
+}
+
+.subscribe-btn {
+    padding: 0.75rem 1.5rem;
+    background: var(--sketch-light);
+    color: var(--sketch-dark);
+    border: none;
+    font-family: 'Covered By Your Grace', cursive;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.subscribe-btn:hover {
+    background: transparent;
+    color: var(--sketch-light);
+    outline: 2px solid var(--sketch-light);
+}
+
+/* Animations */
+@keyframes draw {
+    0% { stroke-dashoffset: 1000; }
+    100% { stroke-dashoffset: 0; }
+}
+
+@keyframes sketching {
+    0% {
+        opacity: 0;
+        transform: translateY(30px) scale(0.9);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes sketchBorder {
+    to {
+        transform: translate(2px, 2px);
+    }
+}
+
+/* SVG Filters for Texture */
+<svg style="display: none;">
+    <filter id="roughpaper">
+        <feTurbulence type="fractalNoise" baseFrequency="0.04" result="noise" />
+        <feDiffuseLighting in="noise" lighting-color="#fff" surfaceScale="2">
+            <feDistantLight azimuth="45" elevation="60" />
+        </feDiffuseLighting>
+    </filter>
+</svg>
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 3rem;
+    }
+    
+    .nav-menu {
+        position: fixed;
+        top: 70px;
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - 70px);
+        background: var(--sketch-light);
+        flex-direction: column;
+        align-items: center;
+        padding: 2rem;
+        transition: left 0.3s ease;
+    }
+    
+    .nav-toggle:checked ~ .nav-menu {
+        left: 0;
+    }
+    
+    .product-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .footer-section {
+        grid-template-columns: 1fr;
+    }
+}

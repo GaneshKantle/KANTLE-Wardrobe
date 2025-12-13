@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Shop - Kantle's Wardrobe</title>
+    <link href="https://fonts.googleapis.com/css2?family=Covered+By+Your+Grace&family=Permanent+Marker&family=Indie+Flower&display=swap" rel="stylesheet">
+    <style>/* Ensure the navbar stays at the top with no extra margin or padding */
+        .nav {
+            position: fixed;
+            top: 0; /* Position the navbar at the top of the page */
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            height: 60px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin: 0; /* Remove any margin */
+            padding: 0; /* Remove any padding */
+        }
+        
+        /* Ensure the content inside the navbar container is centered properly */
+        .nav-container {
+            max-width: 1200px;
+            height: 100%;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 3rem;
+        }
+        
+        /* Logo Image Styling */
+        .nav-logo {
+            height: 40px; /* Fixed height for the logo */
+            width: auto; /* Maintain aspect ratio */
+            object-fit: contain; /* Ensures logo fits without distortion */
+            display: block;
+        }
+        
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+            height: 100%;
+            align-items: center;
+        }
+        
+        .nav-menu a {
+            font-family: 'Covered By Your Grace', cursive;
+            font-size: 1.1rem;
+            color: var(--sketch-dark);
+            text-decoration: none;
+            position: relative;
+            padding: 0.25rem 0.5rem;
+        }
+        
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background: var(--sketch-dark);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+            animation: draw 0.5s linear infinite alternate;
+        }
+        
+        .nav-menu a:hover::after {
+            transform: scaleX(1);
+        }
+        
+        :root {
+            --sketch-dark: #2c2c2c;
+            --sketch-light: #f9f9f9;
+            --accent-color: #e74c3c;
+            --paper-texture: #fff;
+        }
+
+        body {
+            margin-top: 80px;
+            /* margin: 0; */
+            font-family: 'Indie Flower', cursive;
+            background: var(--paper-texture);
+            color: var(--sketch-dark);
+            padding: 2rem;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .product-card {
+            position: relative;
+            background: var(--sketch-light);
+            border: 2px solid var(--sketch-dark);
+            padding: 1rem;
+            transform: rotate(-1deg);
+            transition: all 0.3s ease;
+        }
+
+        .product-card:nth-child(even) {
+            transform: rotate(1deg);
+        }
+
+        .product-card::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            right: -10px;
+            bottom: -10px;
+            border: 2px solid var(--sketch-dark);
+            opacity: 0.3;
+            z-index: -1;
+        }
+
+        .product-card:hover {
+            transform: scale(1.02) rotate(0);
+        }
+
+        .product-image {
+            position: relative;
+            overflow: hidden;
+            border: 2px solid var(--sketch-dark);
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.1);
+        }
+
+        .product-details {
+            padding: 1rem 0;
+            text-align: center;
+        }
+
+        .product-title {
+            font-family: 'Permanent Marker', cursive;
+            font-size: 1.5rem;
+            margin: 0;
+            color: var(--sketch-dark);
+        }
+
+        .product-subtitle {
+            font-family: 'Covered By Your Grace', cursive;
+            font-size: 1.2rem;
+            color: var(--accent-color);
+            margin: 0.5rem 0;
+        }
+
+        @media (max-width: 768px) {
+            .product-grid {
+                grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="nav">
+        <div class="nav-container">
+            <div class="logo-container">
+                <img class="nav-logo" src="Images/Logo.png" alt="Kantle's Wardrobe Logo">
+            </div>
+          
+            <nav class="nav-menu">
+                <a href="About.html">About</a>
+                <a href="Shop now.html">Shop Now</a>
+                <a href="Sign Up.html">Login</a>
+                <a href="Contact.html">Contact</a>
+            </nav>
+        </div>
+    </header>
+    <div class="product-grid">
+        <!-- Shirts Section -->
+        <div class="product-card">
+            <a href="Shirts\Shirt 1.html">
+                <div class="product-image">
+                    <img src="Shirts/Shirt 1.jpg" alt="Lotus Stripe Shirt">
+                </div>
+                <div class="product-details">
+                    <h2 class="product-title">Lotus Stripe</h2>
+                    <p class="product-subtitle">Andamen Pink Shirt</p>
+                </div>
+            </a>
+        </div>
+        <!-- Repeat for other shirts -->
+        
+        <!-- Example of one more card -->
+        <div class="product-card">
+            <a href="Shirts\Shirt 2.html">
+                <div class="product-image">
+                    <img src="Shirts/Shirt 2.jpg" alt="Throner Olive Shirt">
+                </div>
+                <div class="product-details">
+                    <h2 class="product-title">Throner Olive</h2>
+                    <p class="product-subtitle">Patch Pocket Shirt</p>
+                </div>
+            </a>
+        </div>
+
+
+        <div class="product-card"> 
+            <a href="Shirts/Shirt3.html">
+                <div class="product-image">
+                    <img src="Shirts/Shirt 3.jpg" alt="A Classic Coast Stripe Andamen Blue Shirt">
+                </div>
+                <div class="product-details">
+                    <h2 class="product-title">Classic Coast Stripe Shirt</h2>
+                    <p class="product-subtitle">Andamen Blue Cotton Shirt</p>
+                </div>
+            </a>
+        </div>
+        
+
+        <div class="product-card"> 
+            <a href="Shirts/Shirt4.html">
+                <div class="product-image">
+                    <img src="Shirts/Shirt 4.jpg" alt="A Yellow Lamb Wool Pullover T-shirt">
+                </div>
+                <div class="product-details">
+                    <h2 class="product-title">Yellow Lamb Wool Pullover</h2>
+                    <p class="product-subtitle">Comfortable Cotton Yellow T-shirt</p>
+                </div>
+            </a>
+        </div>
+        
+
+        <div class="product-card"> 
+            <a href="Shirts/Shirt5.html">
+                <div class="product-image">
+                    <img src="Shirts/Shirt 5.jpg" alt="A Curved Hemline Checked Green Shirt">
+                </div>
+                <div class="product-details">
+                    <h2 class="product-title">Curved Hemline Checked Shirt</h2>
+                    <p class="product-subtitle">Comfortable Green Checked Shirt</p>
+                </div>
+            </a>
+        </div>
+        
+
+        <div class="product-card"> 
+            <a href="Shirts/Shirt6.html">
+                <div class="product-image">
+                    <img src="Shirts/Shirt 6.jpg" alt="A Handcrafted No Evil White Shirt">
+                </div>
+                <div class="product-details">
+                    <h2 class="product-title">Handcrafted No Evil Shirt</h2>
+                    <p class="product-subtitle">Comfortable White Cotton Shirt</p>
+                </div>
+            </a>
+        </div>
+        
+        
+        <div class="product-card">
+            <a href="./Pants/Pant 1.html">
+                <div class="product-image">
+                    <img src="Pants/Pant 1.jpg" alt="Decibal Multi Black Jeans">
+                </div>
+                <div class="product-details">
+                    <h2 class="product-title">Decibal Multi Black</h2>
+                    <p class="product-subtitle">Black Jeans</p>
+                </div>
+            </a>
+        </div>
+
+        <div class="product-card">
+            <a href="Pants/Pant2.html">
+                <div class="product-image">
+                    <img src="Pants/Pant 2.jpg" alt="Mid Raised Blue Jeans">
+                </div>
+                <div class="product-details">
+                    <h2 class="product-title">Mid Raised Blue</h2>
+                    <p class="product-subtitle">Blue Jeans</p>
+                </div>
+            </a>
+        </div>
+
+        <div class="product-card">
+            <a href="Pants/Pant3.html">
+                <div class="product-image">
+                    <img src="Pants/Pant 3.jpg" alt="Textured Khaki Trouser">
+                </div>
+                <div class="product-details">
+                    <h2 class="product-title">Textured Khaki</h2>
+                    <p class="product-subtitle">Slim Fit Trouser</p>
+                </div>
+            </a>
+         </div>
+         
+         <div class="product-card"> 
+            <a href="Pants/Pant4.html">
+                <div class="product-image">
+                    <img src="Pants/Pant 4.jpg" alt="A Light Mercerised Narrow Blue Jeans">
+                </div>
+                <div class="product-details">
+                    <h2 class="product-title">Light Mercerised Jeans</h2>
+                    <p class="product-subtitle">Narrow Blue Jeans</p>
+                </div>
+            </a>
+        </div>
+        
+
+        <div class="product-card"> 
+            <a href="Pants/Pant5.html">
+                <div class="product-image">
+                    <img src="Pants/Pant 5.jpg" alt="A Stretchable Fit Biege Jeans">
+                </div>
+                <div class="product-details">
+                    <h2 class="product-title">Stretchable Fit Jeans</h2>
+                    <p class="product-subtitle">Super Comfortable Biege Jeans</p>
+                </div>
+            </a>
+        </div>
+
+        <div class="product-card"> 
+            <a href="Pants/Pant6.html">
+                <div class="product-image">
+                    <img src="Pants/Pant 6.jpg" alt="A Baggy Fit Olive Cargo with Side Pockets">
+                </div>
+                <div class="product-details">
+                    <h2 class="product-title">Baggy Fit Cargo</h2>
+                    <p class="product-subtitle">Olive Cargo with Side Pockets</p>
+                </div>
+            </a>
+        </div>
+        
+        <!-- Continue the same pattern for all other products -->
+    </div>
+</body>
+</html>

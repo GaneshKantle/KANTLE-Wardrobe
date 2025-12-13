@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>About - Kantle's Wardrobe</title>
+    <style>
+      /* About Page Styles */
+:root {
+    --sketch-dark: #2c2c2c;
+    --sketch-light: #f9f9f9;
+    --accent-color: #e74c3c;
+    --paper-texture: #fff;
+}
+
+body {
+    margin: 0;
+    font-family: 'Indie Flower', cursive;
+    background: var(--paper-texture);
+    color: var(--sketch-dark);
+    line-height: 1.8;
+}
+
+/* Story Container */
+.story-container {
+    padding-top: 80px;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+}
+
+/* Story Header */
+.story-header {
+    text-align: center;
+    padding: 3rem 1rem;
+    position: relative;
+}
+
+.story-header h1 {
+    font-family: 'Permanent Marker', cursive;
+    font-size: 3.5rem;
+    margin: 0;
+    position: relative;
+    display: inline-block;
+}
+
+.story-header h1::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 10%;
+    width: 80%;
+    height: 3px;
+    background: var(--sketch-dark);
+    animation: draw 2s ease-in-out infinite;
+}
+
+.subtitle {
+    font-family: 'Covered By Your Grace', cursive;
+    font-size: 1.5rem;
+    margin-top: 1rem;
+    opacity: 0.8;
+}
+
+/* Story Chapters */
+.story-chapter {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    padding: 4rem 2rem;
+    position: relative;
+}
+
+.chapter-content {
+    position: relative;
+}
+
+.chapter-title {
+    font-family: 'Permanent Marker', cursive;
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+    display: inline-block;
+}
+
+.chapter-title::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--accent-color);
+    transform: scaleX(0.7);
+    transform-origin: left;
+}
+
+.chapter-content p {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+    padding-left: 1rem;
+}
+
+.chapter-content p::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 2px;
+    background: var(--sketch-dark);
+    opacity: 0.2;
+}
+
+/* Sketch Elements */
+.chapter-sketch {
+    position: relative;
+    min-height: 300px;
+    background: var(--sketch-light);
+    border: 2px solid var(--sketch-dark);
+    transform: rotate(-2deg);
+    transition: transform 0.3s ease;
+}
+
+.chapter-sketch::before {
+    content: '';
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    right: -10px;
+    bottom: -10px;
+    border: 2px solid var(--sketch-dark);
+    opacity: 0.3;
+    transform: rotate(2deg);
+}
+
+.sketch-right {
+    transform: rotate(2deg);
+}
+
+.chapter-sketch:hover {
+    transform: scale(1.02) rotate(0);
+}
+
+/* CTA Section */
+.cta-section {
+    text-align: center;
+    padding: 4rem 2rem;
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 1rem 2rem;
+    font-family: 'Covered By Your Grace', cursive;
+    font-size: 1.5rem;
+    color: var(--sketch-dark);
+    text-decoration: none;
+    border: 2px solid var(--sketch-dark);
+    position: relative;
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.cta-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: var(--sketch-dark);
+    transition: all 0.3s ease;
+    z-index: -1;
+}
+
+.cta-button:hover::before {
+    left: 0;
+}
+
+.cta-button:hover {
+    color: var(--sketch-light);
+}
+
+/* Animations */
+@keyframes draw {
+    0% { transform: scaleX(0.9); }
+    50% { transform: scaleX(1.1); }
+    100% { transform: scaleX(0.9); }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .story-header h1 {
+        font-size: 2.5rem;
+    }
+
+    .story-chapter {
+        grid-template-columns: 1fr;
+        padding: 2rem 1rem;
+    }
+
+    .chapter-sketch {
+        min-height: 200px;
+    }
+}
+    </style>
+    <link rel="stylesheet" href="Index.css">
+    <link href="https://fonts.googleapis.com/css2?family=Covered+By+Your+Grace&family=Permanent+Marker&family=Indie+Flower&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="nav">
+        <div class="nav-container">
+            <div class="logo-container">
+                <img class="nav-logo" src="Images/Logo.png" alt="Kantle's Wardrobe Logo">
+            </div>
+          
+            <nav class="nav-menu">
+                <a href="About.html">About</a>
+                <a href="Shop now.html">Shop Now</a>
+                <a href="Sign Up.html">Login</a>
+                <a href="Contact.html">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="story-container">
+        <div class="story-header">
+            <h1>The Tale of Kantle's Wardrobe</h1>
+            <p class="subtitle">Where Style Meets Destiny</p>
+        </div>
+
+        <div class="story-content">
+            <section class="story-chapter">
+                <div class="chapter-content">
+                    <h2 class="chapter-title">The Beginning</h2>
+                    <p>Welcome to Kantle's Wardrobe, where dreams are stitched, and style is the destiny you create.</p>
+                    <p>Once upon a time in a city where dreams were stitched into the very fabric of life, there lived a visionary named Ganesh Kantle. Kantle was not just a man; he was an artist with a passion for clothing that danced with the soul.</p>
+                </div>
+                <div class="chapter-sketch sketch-right"></div>
+            </section>
+
+            <section class="story-chapter">
+                <div class="chapter-sketch sketch-left"></div>
+                <div class="chapter-content">
+                    <h2 class="chapter-title">The Journey</h2>
+                    <p>As a child, Kantle was entranced by the kaleidoscope of textures and hues in his grandmother's attic, a treasure trove of vintage garments. He'd spend hours there, exploring the secrets of forgotten fashion. It was here that his love affair with clothing began.</p>
+                    <p>Kantle's journey took him from sketching designs in his school notebooks to apprenticing with master tailors in the heart of the city. He was a dreamer, but he was also a doer. He envisioned a world where clothing wasn't just a covering but a canvas for self-expression.</p>
+                </div>
+            </section>
+
+            <section class="story-chapter">
+                <div class="chapter-content">
+                    <h2 class="chapter-title">The Evolution</h2>
+                    <p>In the early days, Kantle's Wardrobe was a tiny atelier with bolts of fabric and a sewing machine. Kantle, along with a team of skilled artisans, poured their hearts into crafting bespoke suits. Each piece told a story, a story of craftsmanship and passion.</p>
+                    <p>The word spread, and soon, the atelier was no longer enough to contain the dreams. When a man stepped into a Kantle's Wardrobe suit, he wasn't just dressed; he was transformed.</p>
+                </div>
+                <div class="chapter-sketch sketch-right"></div>
+            </section>
+
+            <section class="story-chapter">
+                <div class="chapter-sketch sketch-left"></div>
+                <div class="chapter-content">
+                    <h2 class="chapter-title">Our Vision</h2>
+                    <p>Today, Kantle's Wardrobe stands tall, an icon of timeless elegance, where every thread whispers a story, and every piece embodies the spirit of its creator. The dream that began in the attic of a grandmother's house has become a symbol of style, sophistication, and self-discovery.</p>
+                    <p>As Kantle's Wardrobe continues its journey, it invites you to be a part of this tale. It promises that when you wear its creations, you're not just wearing clothing; you're wearing a piece of destiny. It's a destiny where style meets the soul, and fashion becomes a form of art.</p>
+                </div>
+            </section>
+        </div>
+
+        <div class="cta-section">
+            <a href="Shop now.html" class="cta-button">Begin Your Story</a>
+        </div>
+    </main>
+</body>
+</html>
