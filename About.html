@@ -39,7 +39,7 @@ body {
 
 .story-header h1 {
     font-family: 'Permanent Marker', cursive;
-    font-size: 3.5rem;
+    font-size: clamp(1.8rem, 4vw, 3.5rem);
     margin: 0;
     position: relative;
     display: inline-block;
@@ -58,7 +58,7 @@ body {
 
 .subtitle {
     font-family: 'Covered By Your Grace', cursive;
-    font-size: 1.5rem;
+    font-size: clamp(1rem, 2vw, 1.5rem);
     margin-top: 1rem;
     opacity: 0.8;
 }
@@ -78,7 +78,7 @@ body {
 
 .chapter-title {
     font-family: 'Permanent Marker', cursive;
-    font-size: 2rem;
+    font-size: clamp(1.3rem, 2.5vw, 2rem);
     margin-bottom: 1.5rem;
     position: relative;
     display: inline-block;
@@ -97,7 +97,7 @@ body {
 }
 
 .chapter-content p {
-    font-size: 1.1rem;
+    font-size: clamp(0.9rem, 1.3vw, 1.1rem);
     margin-bottom: 1.5rem;
     position: relative;
     padding-left: 1rem;
@@ -117,7 +117,7 @@ body {
 /* Sketch Elements */
 .chapter-sketch {
     position: relative;
-    min-height: 300px;
+    min-height: clamp(200px, 30vw, 300px);
     background: var(--sketch-light);
     border: 2px solid var(--sketch-dark);
     transform: rotate(-2deg);
@@ -152,15 +152,19 @@ body {
 
 .cta-button {
     display: inline-block;
-    padding: 1rem 2rem;
+    padding: clamp(0.75rem, 1.5vw, 1rem) clamp(1.5rem, 3vw, 2rem);
     font-family: 'Covered By Your Grace', cursive;
-    font-size: 1.5rem;
+    font-size: clamp(1rem, 2vw, 1.5rem);
     color: var(--sketch-dark);
     text-decoration: none;
     border: 2px solid var(--sketch-dark);
     position: relative;
     transition: all 0.3s ease;
     overflow: hidden;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .cta-button::before {
@@ -191,18 +195,16 @@ body {
 }
 
 /* Responsive Design */
-@media (max-width: 768px) {
-    .story-header h1 {
-        font-size: 2.5rem;
-    }
-
+@media (max-width: 767px) {
     .story-chapter {
         grid-template-columns: 1fr;
-        padding: 2rem 1rem;
+        padding: clamp(1.5rem, 3vw, 2rem) clamp(1rem, 2vw, 1rem);
     }
+}
 
-    .chapter-sketch {
-        min-height: 200px;
+@media (max-width: 479px) {
+    .story-container {
+        padding-top: clamp(45px, 8vw, 80px);
     }
 }
     </style>
@@ -216,6 +218,13 @@ body {
                 <img class="nav-logo" src="Images/Logo.png" alt="Kantle's Wardrobe Logo">
             </div>
           
+            <input type="checkbox" id="nav-toggle" class="nav-toggle">
+            <label for="nav-toggle" class="nav-toggle-label">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+            <div class="nav-overlay"></div>
             <nav class="nav-menu">
                 <a href="About.html">About</a>
                 <a href="Shop now.html">Shop Now</a>

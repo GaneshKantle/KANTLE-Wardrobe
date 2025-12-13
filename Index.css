@@ -20,8 +20,20 @@
 body {
     background: var(--paper-texture);
     font-family: 'Indie Flower', cursive;
+    font-size: clamp(0.875rem, 1.2vw, 1.1rem);
     line-height: 1.6;
     overflow-x: hidden;
+}
+
+/* Performance optimizations */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
 }
 
 /* Sketch Effect Utility Class */
@@ -73,9 +85,9 @@ body {
 
 /* Logo Image Styling */
 .nav-logo {
-    height: 40px; /* Fixed height for the logo */
-    width: auto; /* Maintain aspect ratio */
-    object-fit: contain; /* Ensures logo fits without distortion */
+    height: clamp(30px, 4vw, 40px);
+    width: auto;
+    object-fit: contain;
     display: block;
 }
 
@@ -88,11 +100,15 @@ body {
 
 .nav-menu a {
     font-family: 'Covered By Your Grace', cursive;
-    font-size: 1.1rem;
+    font-size: clamp(0.9rem, 1.1vw, 1.1rem);
     color: var(--sketch-dark);
     text-decoration: none;
     position: relative;
     padding: 0.25rem 0.5rem;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .nav-menu a::after {
@@ -112,24 +128,63 @@ body {
     transform: scaleX(1);
 }
 
-/* Add margin-top to the hero section to prevent overlap */
-.hero {
-    padding-top: 60px;
+/* Hamburger Menu Button */
+.nav-toggle {
+    display: none;
 }
 
-/* Responsive adjustments */
-@media (max-width: 768px) {
-    .nav {
-        height: 50px;
-    }
-    
-    .nav-logo {
-        height: 35px; /* Slightly smaller logo on mobile */
-    }
-    
-    .hero {
-        padding-top: 50px;
-    }
+.nav-toggle-label {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    padding: 0.5rem;
+    gap: 5px;
+    z-index: 1001;
+}
+
+.nav-toggle-label span {
+    width: 25px;
+    height: 3px;
+    background: var(--sketch-dark);
+    transition: all 0.3s ease;
+    transform-origin: center;
+}
+
+.nav-toggle:checked ~ .nav-toggle-label span:nth-child(1) {
+    transform: rotate(45deg) translate(8px, 8px);
+}
+
+.nav-toggle:checked ~ .nav-toggle-label span:nth-child(2) {
+    opacity: 0;
+}
+
+.nav-toggle:checked ~ .nav-toggle-label span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px);
+}
+
+.nav-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.nav-toggle:checked ~ .nav-overlay {
+    opacity: 1;
+    pointer-events: all;
+}
+
+/* Add margin-top to the hero section to prevent overlap */
+.hero {
+    padding-top: clamp(50px, 8vw, 60px);
+    min-height: 400px;
 }
 
 /* Hero Section with Artistic Elements */
@@ -167,14 +222,15 @@ body {
 
 .hero h1 {
     font-family: 'Permanent Marker', cursive;
-    font-size: 5rem;
+    font-size: clamp(2rem, 5vw, 5rem);
     color: var(--sketch-dark);
     margin-bottom: 1rem;
     animation: sketching 2s ease-out forwards;
+    will-change: transform, opacity;
 }
 
 .hero p {
-    font-size: 2rem;
+    font-size: clamp(1rem, 2.5vw, 2rem);
     margin-bottom: 2rem;
     color: var(--sketch-dark);
     opacity: 0;
@@ -184,15 +240,19 @@ body {
 /* Artistic Button */
 .cta-button {
     display: inline-block;
-    padding: 1rem 2rem;
+    padding: clamp(0.75rem, 1.5vw, 1rem) clamp(1.5rem, 3vw, 2rem);
     font-family: 'Covered By Your Grace', cursive;
-    font-size: 1.5rem;
+    font-size: clamp(1rem, 2vw, 1.5rem);
     color: var(--sketch-dark);
     text-decoration: none;
     border: 2px solid var(--sketch-dark);
     position: relative;
     transition: all 0.3s ease;
     overflow: hidden;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .cta-button::before {
@@ -217,7 +277,7 @@ body {
 
 /* Product Cards with Sketch Effect */
 .featured-products {
-    padding: 5rem 2rem;
+    padding: clamp(2rem, 6vw, 5rem) clamp(1rem, 3vw, 2rem);
     background: var(--paper-texture);
     position: relative;
 }
@@ -225,24 +285,27 @@ body {
 .section-title {
     font-family: 'Permanent Marker', cursive;
     text-align: center;
-    font-size: 3rem;
-    margin-bottom: 3rem;
+    font-size: clamp(1.5rem, 3vw, 3rem);
+    margin-bottom: clamp(1.5rem, 4vw, 3rem);
     color: var(--sketch-dark);
 }
 
 .product-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
+    gap: clamp(1rem, 2.5vw, 2rem);
     max-width: 1200px;
     margin: 0 auto;
+    contain: layout style paint;
 }
 
 .product-card {
     position: relative;
     background: var(--sketch-light);
-    padding: 1rem;
+    padding: clamp(0.75rem, 1.5vw, 1rem);
     transition: transform 0.3s ease;
+    contain: layout style paint;
+    backface-visibility: hidden;
 }
 
 .product-card::before {
@@ -259,10 +322,17 @@ body {
 
 .product-card:hover {
     transform: translate(-5px, -5px);
+    will-change: transform;
 }
 
 .product-card:hover::before {
     transform: translate(10px, 10px);
+}
+
+@media (hover: none) {
+    .product-card:hover {
+        transform: none;
+    }
 }
 
 .product-image {
@@ -287,13 +357,13 @@ body {
 }
 
 .product-info {
-    padding: 1.5rem;
+    padding: clamp(1rem, 2vw, 1.5rem);
     text-align: center;
 }
 
 .product-info h3 {
     font-family: 'Permanent Marker', cursive;
-    font-size: 1.5rem;
+    font-size: clamp(1.1rem, 2vw, 1.5rem);
     margin-bottom: 0.5rem;
 }
 
@@ -301,47 +371,88 @@ body {
 footer {
     background: var(--sketch-dark);
     color: var(--sketch-light);
-    padding: 2rem 2rem;
+    padding: clamp(1.5rem, 3vw, 2rem) clamp(1rem, 2vw, 2rem);
     text-align: center;
+}
+
+.footer-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-section {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(1.5rem, 3vw, 2rem);
+    margin-bottom: clamp(1rem, 2vw, 1.5rem);
 }
 
 footer .footer-content {
     font-family: 'Indie Flower', cursive;
-    font-size: 1.2rem;
+    font-size: clamp(1rem, 1.5vw, 1.2rem);
     margin-bottom: 1rem;
+}
+
+.footer-subscribe {
+    margin-bottom: clamp(1rem, 2vw, 1.5rem);
 }
 
 .footer-subscribe h2 {
     font-family: 'Permanent Marker', cursive;
-    font-size: 2rem;
+    font-size: clamp(1.5rem, 2.5vw, 2rem);
+    margin-bottom: 1rem;
+}
+
+.footer-subscribe p {
+    font-size: clamp(0.9rem, 1.2vw, 1rem);
     margin-bottom: 1rem;
 }
 
 .input-box {
     display: flex;
+    flex-direction: column;
     gap: 1rem;
     margin-top: 1.5rem;
 }
 
 .input-box input {
     flex: 1;
-    padding: 0.75rem;
+    padding: clamp(0.6rem, 1.2vw, 0.75rem);
     border: 2px solid var(--sketch-light);
     background: transparent;
     color: var(--sketch-light);
     font-family: 'Indie Flower', cursive;
-    font-size: 1.1rem;
+    font-size: clamp(0.9rem, 1.3vw, 1.1rem);
+    min-height: 44px;
+    width: 100%;
+}
+
+@media (min-width: 480px) {
+    .input-box {
+        flex-direction: row;
+    }
 }
 
 .subscribe-btn {
-    padding: 0.75rem 1.5rem;
+    padding: clamp(0.6rem, 1.2vw, 0.75rem) clamp(1rem, 2vw, 1.5rem);
     background: var(--sketch-light);
     color: var(--sketch-dark);
     border: none;
     font-family: 'Covered By Your Grace', cursive;
-    font-size: 1.2rem;
+    font-size: clamp(1rem, 1.5vw, 1.2rem);
     cursor: pointer;
     transition: all 0.3s ease;
+    min-height: 44px;
+    min-width: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media (min-width: 480px) {
+    .subscribe-btn {
+        flex-shrink: 0;
+    }
 }
 
 .subscribe-btn:hover {
@@ -378,44 +489,288 @@ footer .footer-content {
     }
 }
 
-/* SVG Filters for Texture */
-<svg style="display: none;">
-    <filter id="roughpaper">
-        <feTurbulence type="fractalNoise" baseFrequency="0.04" result="noise" />
-        <feDiffuseLighting in="noise" lighting-color="#fff" surfaceScale="2">
-            <feDistantLight azimuth="45" elevation="60" />
-        </feDiffuseLighting>
-    </filter>
-</svg>
+/* SVG Filters for Texture - Note: SVG should be in HTML, not CSS */
 
-/* Responsive Design */
-@media (max-width: 768px) {
-    .hero h1 {
-        font-size: 3rem;
+/* Footer Navigation */
+.footer-nav {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: clamp(1.5rem, 3vw, 2rem);
+    margin-top: clamp(1rem, 2vw, 1.5rem);
+}
+
+.footer-column {
+    text-align: center;
+}
+
+.footer-column h3 {
+    font-family: 'Permanent Marker', cursive;
+    font-size: clamp(1.1rem, 1.8vw, 1.3rem);
+    margin-bottom: 1rem;
+    color: var(--sketch-light);
+}
+
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-column ul li {
+    margin-bottom: 0.5rem;
+}
+
+.footer-column ul li a {
+    color: var(--sketch-light);
+    text-decoration: none;
+    font-size: clamp(0.85rem, 1.2vw, 1rem);
+    transition: color 0.3s ease;
+    display: inline-block;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer-column ul li a:hover {
+    color: var(--accent-color);
+}
+
+.footer-copyright {
+    margin-top: clamp(1rem, 2vw, 1.5rem);
+    padding-top: clamp(1rem, 2vw, 1.5rem);
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    font-size: clamp(0.8rem, 1.1vw, 0.9rem);
+}
+
+.footer-copyright p {
+    margin: 0.5rem 0;
+}
+
+.footer-copyright a {
+    color: var(--sketch-light);
+    text-decoration: none;
+}
+
+/* Responsive Design - Mobile First Approach */
+/* Base: 320px+ (smallest mobile) */
+@media (max-width: 479px) {
+    .nav {
+        height: clamp(45px, 8vw, 50px);
+    }
+    
+    .nav-container {
+        padding: 0 0.75rem;
     }
     
     .nav-menu {
         position: fixed;
-        top: 70px;
+        top: clamp(45px, 8vw, 50px);
         left: -100%;
         width: 100%;
-        height: calc(100vh - 70px);
+        height: calc(100vh - clamp(45px, 8vw, 50px));
         background: var(--sketch-light);
         flex-direction: column;
         align-items: center;
-        padding: 2rem;
-        transition: left 0.3s ease;
+        padding: 2rem 1rem;
+        transition: transform 0.3s ease;
+        z-index: 1000;
+        overflow-y: auto;
+        box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
     }
     
     .nav-toggle:checked ~ .nav-menu {
+        transform: translateX(0);
         left: 0;
+    }
+    
+    .nav-toggle-label {
+        display: flex;
+    }
+    
+    .nav-overlay {
+        display: block;
+    }
+    
+    .hero-content {
+        padding: 1rem;
     }
     
     .product-grid {
         grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .footer-nav {
+        grid-template-columns: 1fr;
+    }
+    
+    .input-box {
+        flex-direction: column;
+    }
+}
+
+/* Small: 480px+ (large mobile) */
+@media (min-width: 480px) and (max-width: 767px) {
+    .nav {
+        height: clamp(50px, 8vw, 55px);
+    }
+    
+    .nav-menu {
+        position: fixed;
+        top: clamp(50px, 8vw, 55px);
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - clamp(50px, 8vw, 55px));
+        background: var(--sketch-light);
+        flex-direction: column;
+        align-items: center;
+        padding: 2rem;
+        transition: transform 0.3s ease;
+        z-index: 1000;
+        overflow-y: auto;
+        box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    .nav-toggle:checked ~ .nav-menu {
+        transform: translateX(0);
+        left: 0;
+    }
+    
+    .nav-toggle-label {
+        display: flex;
+    }
+    
+    .nav-overlay {
+        display: block;
+    }
+    
+    .product-grid {
+        grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr));
+    }
+    
+    .footer-nav {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Medium: 768px+ (tablet) */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .nav {
+        height: clamp(55px, 7vw, 60px);
+    }
+    
+    .nav-menu {
+        gap: 1.5rem;
+    }
+    
+    .product-grid {
+        grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
     }
     
     .footer-section {
-        grid-template-columns: 1fr;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    
+    .footer-subscribe {
+        flex: 1 1 100%;
+    }
+    
+    .footer-nav {
+        grid-template-columns: repeat(2, 1fr);
+        flex: 1 1 100%;
+    }
+}
+
+/* Large: 1024px+ (desktop) */
+@media (min-width: 1024px) and (max-width: 1439px) {
+    .nav-container {
+        padding: 0 2rem;
+    }
+    
+    .product-grid {
+        grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+    }
+    
+    .footer-section {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+    
+    .footer-subscribe {
+        flex: 1 1 40%;
+    }
+    
+    .footer-nav {
+        grid-template-columns: repeat(2, 1fr);
+        flex: 1 1 60%;
+    }
+}
+
+/* XL: 1440px+ (large desktop) */
+@media (min-width: 1440px) and (max-width: 1919px) {
+    .nav-container {
+        max-width: 1400px;
+        padding: 0 2rem;
+    }
+    
+    .product-grid {
+        max-width: 1400px;
+        grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
+    }
+    
+    .footer-wrapper {
+        max-width: 1400px;
+    }
+}
+
+/* XXL: 1920px+ (full HD) */
+@media (min-width: 1920px) and (max-width: 2559px) {
+    .nav-container {
+        max-width: 1600px;
+        padding: 0 3rem;
+    }
+    
+    .product-grid {
+        max-width: 1600px;
+        grid-template-columns: repeat(auto-fit, minmax(min(350px, 100%), 1fr));
+    }
+    
+    .footer-wrapper {
+        max-width: 1600px;
+    }
+}
+
+/* XXXL: 2560px+ (2K/4K monitors) */
+@media (min-width: 2560px) and (max-width: 3839px) {
+    .nav-container {
+        max-width: 2000px;
+        padding: 0 4rem;
+    }
+    
+    .product-grid {
+        max-width: 2000px;
+        grid-template-columns: repeat(auto-fit, minmax(min(400px, 100%), 1fr));
+    }
+    
+    .footer-wrapper {
+        max-width: 2000px;
+    }
+}
+
+/* Ultra: 3840px+ (100-inch displays) */
+@media (min-width: 3840px) {
+    .nav-container {
+        max-width: 2400px;
+        padding: 0 5rem;
+    }
+    
+    .product-grid {
+        max-width: 2400px;
+        grid-template-columns: repeat(auto-fit, minmax(min(450px, 100%), 1fr));
+    }
+    
+    .footer-wrapper {
+        max-width: 2400px;
     }
 }

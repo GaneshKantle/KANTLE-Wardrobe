@@ -36,9 +36,9 @@ body {
     border-radius: 10px;
     position: relative;
     overflow: hidden;
-    width: 768px;
+    width: min(768px, 95%);
     max-width: 100%;
-    min-height: 480px;
+    min-height: clamp(480px, 60vh, 600px);
     border: 2px solid var(--sketch-dark);
     transform: rotate(-1deg);
 }
@@ -92,15 +92,15 @@ form {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    padding: 0 50px;
+    padding: 0 clamp(20px, 5vw, 50px);
     height: 100%;
     text-align: center;
 }
 
 h1 {
     font-family: 'Permanent Marker', cursive;
-    font-size: 2rem;
-    margin-bottom: 20px;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    margin-bottom: clamp(15px, 2.5vw, 20px);
     position: relative;
 }
 
@@ -118,12 +118,13 @@ h1::after {
 input {
     background: none;
     border: 2px solid var(--sketch-dark);
-    padding: 12px 15px;
-    margin: 8px 0;
+    padding: clamp(10px, 1.5vw, 12px) clamp(12px, 2vw, 15px);
+    margin: clamp(6px, 1vw, 8px) 0;
     width: 100%;
     font-family: 'Indie Flower', cursive;
-    font-size: 1.1rem;
+    font-size: clamp(0.95rem, 1.3vw, 1.1rem);
     transform: rotate(-1deg);
+    min-height: 44px;
 }
 
 input:focus {
@@ -133,15 +134,17 @@ input:focus {
 
 button {
     font-family: 'Covered By Your Grace', cursive;
-    font-size: 1.2rem;
-    padding: 12px 45px;
-    margin-top: 20px;
+    font-size: clamp(1rem, 1.5vw, 1.2rem);
+    padding: clamp(10px, 1.5vw, 12px) clamp(35px, 5vw, 45px);
+    margin-top: clamp(15px, 2.5vw, 20px);
     border: 2px solid var(--sketch-dark);
     background: none;
     cursor: pointer;
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
+    min-height: 44px;
+    min-width: 44px;
 }
 
 button:hover {
@@ -185,7 +188,7 @@ button:hover {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    padding: 0 40px;
+    padding: 0 clamp(20px, 4vw, 40px);
     text-align: center;
     top: 0;
     height: 100%;
@@ -222,8 +225,10 @@ button:hover {
     justify-content: center;
     align-items: center;
     margin: 0 5px;
-    height: 40px;
-    width: 40px;
+    height: clamp(40px, 5vw, 44px);
+    width: clamp(40px, 5vw, 44px);
+    min-height: 44px;
+    min-width: 44px;
     text-decoration: none;
     color: var(--sketch-dark);
     transform: rotate(-2deg);
@@ -242,9 +247,10 @@ button:hover {
     100% { transform: scaleX(0.9); }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
     .container {
-        min-height: 800px;
+        min-height: clamp(600px, 100vh, 800px);
+        transform: rotate(0deg);
     }
     .form-container {
         width: 100%;
@@ -252,6 +258,19 @@ button:hover {
     }
     .overlay-container {
         display: none;
+    }
+    body {
+        padding: 1rem;
+    }
+}
+
+@media (max-width: 479px) {
+    .container {
+        width: 100%;
+        border-radius: 0;
+    }
+    form {
+        padding: 0 1rem;
     }
 }
    </style>
